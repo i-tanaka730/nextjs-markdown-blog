@@ -1,6 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import Link from 'next/link';
+import PostCard from '../components/PostCard';
 
 export const getStaticProps = () => {
   const files = fs.readdirSync('posts');
@@ -23,13 +23,11 @@ export const getStaticProps = () => {
 export default function Home({ posts }) {
   return (
     <div className="my-8">
-      {posts.map((post) => (
-        <div key={post.slug}>
-          <Link href={`/post/${post.slug}`}>
-            <a>{post.frontMatter.title}</a>
-          </Link>
-        </div>
-      ))}
+      <div className="grid grid-cols-3">
+        {posts.map((post) => (
+          <PostCard key={post.slug} post={post} />
+        ))}
+      </div>
     </div>
   );
 }
