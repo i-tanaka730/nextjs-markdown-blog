@@ -1,6 +1,7 @@
 import React from 'react';
 import fs from 'fs';
 import matter from 'gray-matter';
+import { marked } from 'marked';
 
 // ダイナミックページでgetStaticPropsを利用する場合に
 // getStaticPathsがないとエラーになります。
@@ -37,7 +38,8 @@ const Post = ({ frontMatter, content }) => {
   return (
     <div>
       <h1>{frontMatter.title}</h1>
-      <div>{content}</div>
+      <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+      {/* <div>{content}</div> */}
     </div>
   );
 };
