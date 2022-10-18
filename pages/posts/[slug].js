@@ -2,6 +2,7 @@ import React from 'react';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import Image from 'next/image';
 
 // ダイナミックページでgetStaticPropsを利用する場合に
 // getStaticPathsがないとエラーになります。
@@ -37,6 +38,14 @@ export async function getStaticPaths() {
 const Post = ({ frontMatter, content }) => {
   return (
     <div className="prose">
+      <div className="border">
+        <Image
+          src={`/${frontMatter.image}`}
+          width={600}
+          height={400}
+          alt={frontMatter.title}
+        />
+      </div>
       <h1>{frontMatter.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
     </div>
