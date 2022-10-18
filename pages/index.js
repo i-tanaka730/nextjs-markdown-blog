@@ -30,7 +30,7 @@ export const getStaticProps = () => {
 export default function Home({ posts }) {
   return (
     <div className="my-8">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 gap-4">
         {posts.map((post) => (
           // getStaticPropsで設定したスラッグ・メタ情報をPostCardへ受け渡し
           <PostCard key={post.slug} post={post} />
