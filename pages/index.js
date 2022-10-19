@@ -21,7 +21,12 @@ export const getStaticProps = () => {
     };
   });
 
-  return { props: { posts } };
+  // 日付の降順にソート
+  const sortedPosts = posts.sort((postA, postB) =>
+    new Date(postA.frontMatter.date) > new Date(postB.frontMatter.date) ? -1 : 1
+  );
+
+  return { props: { posts:sortedPosts } };
 };
 
 /**
