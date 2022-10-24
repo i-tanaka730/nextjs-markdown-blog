@@ -3,6 +3,9 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import Image from 'next/image';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github-dark.css';
+import { useEffect } from 'react';
 
 // ダイナミックページでgetStaticPropsを利用する場合に
 // getStaticPathsがないとエラーになります。
@@ -36,6 +39,11 @@ export async function getStaticPaths() {
 }
 
 const Post = ({ frontMatter, content }) => {
+  useEffect(() => {
+    // client side で invoke
+    hljs.highlightAll();
+  }, [hljs]);
+
   return (
     <div className="prose">
       <div className="border">

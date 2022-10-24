@@ -20,10 +20,23 @@ image: images/onepiece01_luffy.png
 - できます
 - 完璧です
 
-```test CSharp
-public string GetName()
-{
+```javascript
+import marked from "marked";
 
+marked.setOptions({
+  langPrefix: "hljs language-",
+  highlight: function(code) {
+    return require("highlight.js").highlightAuto(code, ["html", "javascript"])
+      .value;
+  }
+});
+
+```
+
+```CSharp
+public string GetName(int id)
+{
+  return User.First(u => u.Id == id).Name;
 }
 
 ```
