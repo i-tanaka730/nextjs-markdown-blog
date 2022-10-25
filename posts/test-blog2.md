@@ -20,6 +20,8 @@ image: images/onepiece01_luffy.png
 - できます
 - 完璧です
 
+![test](http://localhost:3000/images/food_cup_ramen_miso.png)
+
 ```javascript
 import marked from "marked";
 
